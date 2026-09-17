@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="0dp">
+        
+        <!-- Spacer to push card to bottom -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+            
+        <!-- Loading and error message container -->
+        <LinearLayout
+            android:id="@+id/loadingErrorContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/loadingProgress"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="#000000"
+                android:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/loadingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please wait..."
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/errorText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#D32F2F"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="8dp"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <!-- Minus icon above the card -->
+        <ImageView
+            android:id="@+id/minusHandle"
+            android:layout_width="32dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_minus_grey"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="0dp"
+            android:contentDescription="@string/minus_icon_desc"/>
+
+        <LinearLayout
+            android:id="@+id/glassCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/glass_card"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:elevation="6dp">
+
+            
+
+            <!-- Google Play row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/google_play"/>
+
+                <TextView
+                    android:id="@+id/txtStore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Google Play"
+                    android:textColor="#202124"
+                    android:textStyle="bold"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <!-- Loading overlay shown when More info is clicked -->
+            <LinearLayout
+                android:id="@+id/loadingOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    style="@android:style/Widget.ProgressBar.Small"
+                    android:indeterminate="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Loading..."
+                    android:textColor="#5F6368"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Notice message after loading -->
+            <TextView
+                android:id="@+id/txtInfoNotice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:visibility="gone"
+                android:textColor="#202124"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp" />
+
+            <!-- Spacer -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"/>
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A new update is available."
+                android:textColor="#303134"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="6dp"/>
+
+            <!-- Spacer -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"/>
+
+            <!-- App row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <FrameLayout
+                    android:id="@+id/iconContainer"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/round_image"
+                    android:clipToOutline="true"
+                    android:outlineProvider="background">
+
+                    <ImageView
+                        android:id="@+id/imgAppIcon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/mihrk_sir_dp"/>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
+
+                    <TextView
+                        android:id="@+id/txtAppName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Friends Chat"
+                        android:textColor="#202124"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/txtSize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Size: 3.1 MB"
+                        android:textColor="#5F6368"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Spacer -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="12dp"/>
+
+            <!-- Usage message -->
+            <TextView
+                android:id="@+id/txtUseMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="To continue, update to the latest version."
+                android:textColor="#5F6368"
+                android:textSize="13sp"/>
+
+            <!-- Spacer -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"/>
+
+            <!-- What's new header -->
+            <TextView
+                android:id="@+id/txtWhatsNew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What's new"
+                android:textStyle="bold"
+                android:textColor="#202124"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/txtUpdatedOn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Updated on Nov 20, 2025"
+                android:textColor="#5F6368"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"/>
+
+            <!-- Info details (visible by default) -->
+            <LinearLayout
+                android:id="@+id/infoGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/txtFeatures"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Enhanced stability for all devices\n• Faster startup and smoother animations\n• Improved data efficiency on mobile networks\n• Accessibility and security refinements\n• General performance optimizations"
+                    android:textColor="#202124"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <!-- Bottom actions -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|end"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/btnMoreInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:text="More info"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#097969"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:background="@android:color/transparent"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="140dp"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:text="Update"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/btn_update"
+                    android:backgroundTint="@null"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

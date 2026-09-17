@@ -1,0 +1,90 @@
+[
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_ic_google_play.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/ic_google_play.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_bg_colorful_1.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/bg_colorful_1.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/xml_file_paths.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/xml/file_paths.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_btn_plain_white.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/btn_plain_white.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_ic_cross_border.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/ic_cross_border.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_bg_colorful_2.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/bg_colorful_2.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_mihrk_sir_dp.jpg.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/mihrk_sir_dp.jpg"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_ic_minus_grey.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/ic_minus_grey.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/layout_activity_main.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_google_play.png.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/google_play.png"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_bg_colorful_5.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/bg_colorful_5.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_bg_colorful.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/bg_colorful.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_glass_card.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/glass_card.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_bg_colorful_3.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/bg_colorful_3.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_round_image_outline.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/round_image_outline.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_animated_colorful.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/animated_colorful.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_round_image.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/round_image.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_dp_frame.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/dp_frame.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_icon.png.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/icon.png"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_btn_update.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/btn_update.xml"
+    },
+    {
+        "merged": "com.playstore.mihrk.app-debug-31:/drawable_bg_colorful_4.xml.flat",
+        "source": "com.playstore.mihrk.app-main-33:/drawable/bg_colorful_4.xml"
+    }
+]

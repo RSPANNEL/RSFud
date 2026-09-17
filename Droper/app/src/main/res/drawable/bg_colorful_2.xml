@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Slightly shifted hues/centers for subtle motion -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="linear" android:angle="90"
+                android:startColor="#55F14CFF" android:endColor="#6BF2A0FF"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:centerX="80%" android:centerY="10%"
+                android:gradientRadius="520dp" android:startColor="#88D6FF7A"
+                android:centerColor="#55D6FF7A" android:endColor="#00D6FF7A"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:centerX="58%" android:centerY="48%"
+                android:gradientRadius="540dp" android:startColor="#88FF5CEE"
+                android:centerColor="#55FF5CEE" android:endColor="#00FF5CEE"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:centerX="12%" android:centerY="8%"
+                android:gradientRadius="500dp" android:startColor="#8850C0FF"
+                android:centerColor="#5550C0FF" android:endColor="#0050C0FF"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:centerX="38%" android:centerY="90%"
+                android:gradientRadius="540dp" android:startColor="#66FF4A6E"
+                android:centerColor="#55FF3256" android:endColor="#00FF2E6E"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:centerX="5%" android:centerY="96%"
+                android:gradientRadius="540dp" android:startColor="#88706AFF"
+                android:centerColor="#55505AFF" android:endColor="#00405AFF"/>
+        </shape>
+    </item>
+</layer-list>

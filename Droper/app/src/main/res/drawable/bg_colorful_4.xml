@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Deeper variant with swapped positions to create punch/overlap feel -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="linear" android:angle="90"
+                android:startColor="#45E91EFF" android:endColor="#5AF271FF"/>
+        </shape>
+    </item>
+    <!-- bring magenta to top-left -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:centerX="18%" android:centerY="12%"
+                android:gradientRadius="520dp" android:startColor="#99FF66F0"
+                android:centerColor="#66FF66F0" android:endColor="#00FF66F0"/>
+        </shape>
+    </item>
+    <!-- move green/yellow to lower-right -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:centerX="90%" android:centerY="88%"
+                android:gradientRadius="520dp" android:startColor="#99E0FF7A"
+                android:centerColor="#66E0FF7A" android:endColor="#00E0FF7A"/>
+        </shape>
+    </item>
+    <!-- stronger violet bottom-left arc -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:centerX="6%" android:centerY="92%"
+                android:gradientRadius="560dp" android:startColor="#9948A0FF"
+                android:centerColor="#6648A0FF" android:endColor="#0048A0FF"/>
+        </shape>
+    </item>
+    <!-- red/orange sweeping from right edge -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:centerX="82%" android:centerY="70%"
+                android:gradientRadius="560dp" android:startColor="#99FF4A5E"
+                android:centerColor="#66FF3750" android:endColor="#00FF2E48"/>
+        </shape>
+    </item>
+</layer-list>

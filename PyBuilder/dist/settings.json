@@ -1,0 +1,8 @@
+{
+  "root": "C:/Users/india/Desktop/Enc Crypter",
+  "jdk": "C:/Program Files/Java/jdk-17",
+  "sdk": "C:\\Users\\india\\AppData\\Local\\Android\\Sdk",
+  "build_tools": "C:\\Users\\india\\AppData\\Local\\Android\\Sdk\\build-tools\\36.1.0-rc1",
+  "gradle": "C:\\Gradle\\gradle-9.2.1\\bin",
+  "keystore_dir_or_file": "C:/Users/india/Desktop/Enc Crypter/PyBuilder/dist/Keystore Keys"
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Variant with colors crossing diagonally for dynamic punch -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="linear" android:angle="90"
+                android:startColor="#4FF05BFF" android:endColor="#66F2B6FF"/>
+        </shape>
+    </item>
+    <!-- cyan/green top-left sweeping down -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:centerX="12%" android:centerY="10%"
+                android:gradientRadius="520dp" android:startColor="#99D6FF7A"
+                android:centerColor="#66D6FF7A" android:endColor="#00D6FF7A"/>
+        </shape>
+    </item>
+    <!-- magenta pushed to lower-right -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:centerX="88%" android:centerY="86%"
+                android:gradientRadius="560dp" android:startColor="#99FF74F0"
+                android:centerColor="#66FF74F0" android:endColor="#00FF74F0"/>
+        </shape>
+    </item>
+    <!-- blue/violet accent top-right crossing -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:centerX="94%" android:centerY="8%"
+                android:gradientRadius="500dp" android:startColor="#9960A8FF"
+                android:centerColor="#6660A8FF" android:endColor="#0060A8FF"/>
+        </shape>
+    </item>
+    <!-- orange/red from bottom-left punching upward -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:type="radial" android:centerX="8%" android:centerY="96%"
+                android:gradientRadius="560dp" android:startColor="#99FF5A46"
+                android:centerColor="#66FF3E42" android:endColor="#00FF2E44"/>
+        </shape>
+    </item>
+</layer-list>

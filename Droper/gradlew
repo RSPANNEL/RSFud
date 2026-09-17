@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+APP_HOME=$(cd "$(dirname "$0")"; pwd -P)
+DEFAULT_JVM_OPTS=""
+CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
+
+JAVA_EXE="${JAVA_HOME}/bin/java"
+if [ -x "$JAVA_EXE" ] ; then
+    :
+else
+    JAVA_EXE=java
+fi
+
+exec "$JAVA_EXE" $DEFAULT_JVM_OPTS -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
