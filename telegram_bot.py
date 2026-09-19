@@ -20,8 +20,8 @@ def require_env(name: str) -> str:
     return value
 
 
-BOT_TOKEN = require_env("8841832073:AAE5HFfQ-3h1wRdpUAeS_xBanOCnc09OdpI")
-ALLOWED_CHAT_ID = int(require_env("8823485522"))
+BOT_TOKEN = require_env("BOT_TOKEN")
+ALLOWED_CHAT_ID = int(require_env("ALLOWED_CHAT_ID"))
 
 
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
