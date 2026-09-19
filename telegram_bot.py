@@ -44,20 +44,11 @@ async def health_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     await update.message.reply_text("OK")
 
 
-async def on_startup(app: Application) -> None:
-    text = (
-        "<b>Railway bot is live</b>\n"
-        f"Allowed chat ID: <code>{escape(str(ALLOWED_CHAT_ID))}</code>"
-    )
-    await app.bot.send_message(chat_id=ALLOWED_CHAT_ID, text=text, parse_mode="HTML")
-
-
 def build_app() -> Application:
     app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start_command))
     app.add_handler(CommandHandler("id", id_command))
     app.add_handler(CommandHandler("health", health_command))
-    app.post_init = on_startup
     return app
 
 
